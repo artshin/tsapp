@@ -17,7 +17,8 @@
         "alias": {
           "Components": "./src/Components",
           "Containers": "./src/Containers",
-          "Screens": "./src/Screens"
+          "Screens": "./src/Screens",
+          "Utils": "./src/Utils"
         }
       }
     ]
