@@ -10,39 +10,17 @@ import {
   Text,
   Left,
   H3,
-  ListItem,
-  StyleProvider,
   Body,
 } from 'native-base'
-import { styles } from './styles'
-import currency from 'currency.js'
-import { LabeledValue } from 'Components/LabeledValue'
-// import getTheme from '../../native-base-theme/components'
-
-type CurrencyNumber = currency
-
-interface Currency {
-  id: string
-  name: string
-}
-
-interface CurrencyPair {
-  id: string
-  name: string
-  baseCurrency: Currency
-  quoteCurrency: Currency
-  price: CurrencyNumber
-}
-
-interface Exchange {
-  id: string
-  name: string
-  pairs: CurrencyPair[]
-  website: string
-}
+import {
+  LabeledValue,
+  Props as LabeledValueProps,
+} from 'Components/LabeledValue'
+import { Exchange } from 'Models'
 
 interface Props {
   exchanges: Exchange[]
+  labeledValuePlaceholder?: LabeledValueProps
 }
 
 const VerticalSeparator = () => (
@@ -60,11 +38,17 @@ const HorizontalSeparator = () => (
 )
 
 export class ExchangesScreen extends React.PureComponent<Props> {
+  public static defaultProps = {
+    labeledValuePlaceholder: {
+      label: '-',
+      value: '-',
+    },
+  }
+
   public render() {
     const { exchanges } = this.props
 
     return (
-      // <StyleProvider style={getTheme()}>
       <Container>
         <Content>
           <FlatList
@@ -74,31 +58,47 @@ export class ExchangesScreen extends React.PureComponent<Props> {
           />
         </Content>
       </Container>
-      // </StyleProvider>
     )
   }
+
+  private keyExtractor = (item: Exchange) => item.id
 
   private renderItem = ({ item }: { item: Exchange }) => (
     <Card transparent={true}>
       <CardItem>
         <Left>
-          <Thumbnail source={require('../Images/launch-icon.png')} small />
+          <Thumbnail source={require('Images/launch-icon.png')} small />
           <Body>
             <H3>{item.name}</H3>
-            <Text note={true}>binance.com</Text>
+            <Text note={true}>{item.website}</Text>
           </Body>
         </Left>
       </CardItem>
       <CardItem cardBody={true}>
-        <LabeledValue />
+        {this.renderCurrencyPairPrice(0, item)}
         <VerticalSeparator />
-        <LabeledValue />
+        {this.renderCurrencyPairPrice(1, item)}
         <VerticalSeparator />
-        <LabeledValue />
+        {this.renderCurrencyPairPrice(2, item)}
       </CardItem>
       <HorizontalSeparator />
     </Card>
   )
 
-  private keyExtractor = (item: Exchange) => item.id
+  private renderCurrencyPairPrice = (pairIndex: number, exchange: Exchange) => {
+    const placeholder =
+      this.props.labeledValuePlaceholder ||
+      ExchangesScreen.defaultProps.labeledValuePlaceholder
+
+    const { pairs } = exchange
+
+    const label =
+      pairs.length > pairIndex ? pairs[pairIndex].pairName : placeholder.label
+    const value =
+      pairs.length > pairIndex
+        ? pairs[pairIndex].price.toString()
+        : placeholder.value
+
+    return <LabeledValue label={label} value={value} />
+  }
 }

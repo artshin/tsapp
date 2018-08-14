@@ -1,9 +1,10 @@
 import { createStackNavigator } from 'react-navigation'
-import { LandingScreen } from 'Screens/LandingScreen'
+import { ExchangesScreen, LandingScreen } from 'Screens'
 
 export const StackNavigator = createStackNavigator(
   {
-    Landing: LandingScreen,
+    'ExchangesScreen': ExchangesScreen,
+    'Landing': LandingScreen,
   },
   {
     initialRouteName: 'Landing',

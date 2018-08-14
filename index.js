@@ -1,7 +1,10 @@
 import { AppRegistry } from 'react-native'
 import App from './App'
-import { name as appName } from './app.json'
+import appData from './app.json'
+import StorybookUIHMRRoot from './src/Storybook'
 
-import './storybook'
+// Storybook
+AppRegistry.registerComponent(appData.name, () => StorybookUIHMRRoot)
 
-// AppRegistry.registerComponent(appName, () => App)
+// App
+// AppRegistry.registerComponent(appData.name, () => App)

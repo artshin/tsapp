@@ -2,5 +2,11 @@
   "flow.enabled": false,
   "eslint.autoFixOnSave": false,
   "editor.formatOnSave": true,
-  "javascript.format.enable": false
+  "javascript.format.enable": false,
+  "eslint.enable": false,
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "prettier.jsxBracketSameLine": true,
+  "prettier.printWidth": 100,
+  "typescript.preferences.quoteStyle": "single"
 }

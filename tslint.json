@@ -8,11 +8,26 @@
   ],
   "jsRules": {},
   "rules": {
-    "semicolon": [true, "never"],
-    "interface-name": [true, "never-prefix"],
-    "no-empty-interface": [false],
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
+    "no-empty-interface": [
+      false
+    ],
     "ordered-imports": false,
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "jsx-boolean-value": false,
+    "no-unused-variable": true,
+    "quotemark": [
+      true,
+      "single",
+      "jsx-single"
+    ]
   },
   "rulesDirectory": []
 }

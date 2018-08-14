@@ -7,7 +7,7 @@
     "test": "jest",
     "lint": "tslint 'src/**/*.{ts,tsx}'",
     "clean-install": "rm -rf node_modules && yarn",
-    "storybook": "storybook start -p 7007"
+    "storybook": "storybook start -p 7007 -c ./src/Storybook"
   },
   "dependencies": {
     "currency.js": "1.1.4",

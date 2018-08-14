@@ -494,7 +494,7 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
-"@storybook/addon-actions@3.4.10", "@storybook/addon-actions@^3.4.10":
+"@storybook/addon-actions@3.4.10":
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.4.10.tgz#b90ca8ccbad925dcbb4af02d2d24cc2c60bcec3f"
   dependencies:
@@ -509,7 +509,7 @@
     react-inspector "^2.2.2"
     uuid "^3.2.1"
 
-"@storybook/addon-links@3.4.10", "@storybook/addon-links@^3.4.10":
+"@storybook/addon-links@3.4.10":
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.4.10.tgz#db53d0a0b354e7f5e55195315f48f7045307a429"
   dependencies:
@@ -518,7 +518,7 @@
     global "^4.3.2"
     prop-types "^15.6.1"
 
-"@storybook/addons@3.4.10", "@storybook/addons@^3.4.10":
+"@storybook/addons@3.4.10":
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.4.10.tgz#13298cdcb7ccc396321b1336b9785b69273a022d"
 
@@ -616,7 +616,7 @@
     lodash.pick "^4.4.0"
     shallowequal "^0.2.2"
 
-"@storybook/react-native@^3.4.10":
+"@storybook/react-native@3.4.10":
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/@storybook/react-native/-/react-native-3.4.10.tgz#80480ec4ac2cf9597c4524b7f4ba44968b42f08e"
   dependencies:
@@ -676,7 +676,7 @@
   dependencies:
     babel-runtime "^6.5.0"
 
-"@storybook/react@^3.4.10":
+"@storybook/react@3.4.10":
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-3.4.10.tgz#3bab6cd5c23c90b3de7b9e5aa58042a28cb0d181"
   dependencies:
@@ -775,11 +775,11 @@
   dependencies:
     csstype "^2.2.0"
 
-"@types/storybook__react-native@^3.0.1":
+"@types/storybook__react-native@3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/storybook__react-native/-/storybook__react-native-3.0.1.tgz#d15d64bff328aa8fac510effe73e0757e4cb175c"
 
-"@types/storybook__react@^3.0.9":
+"@types/storybook__react@3.0.9":
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@types/storybook__react/-/storybook__react-3.0.9.tgz#aac193f0c037ddfc2342bd027d720553ac089a56"
   dependencies:
@@ -3092,7 +3092,7 @@ csstype@^2.2.0:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.6.tgz#2ae1db2319642d8b80a668d2d025c6196071e788"
 
-currency.js@^1.1.4:
+currency.js@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/currency.js/-/currency.js-1.1.4.tgz#b772071e0501a0e926bda0456a6828631cebcbb5"
 
@@ -6092,7 +6092,7 @@ native-base-shoutem-theme@0.2.2:
     lodash "^4.10.1"
     prop-types "^15.5.10"
 
-native-base@^2.7.2:
+native-base@2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/native-base/-/native-base-2.7.2.tgz#682bc2bc9f9e4d3b27a8c58ad4b5994222ad0ebd"
   dependencies:

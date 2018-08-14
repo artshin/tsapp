@@ -18,7 +18,10 @@
           "Components": "./src/Components",
           "Containers": "./src/Containers",
           "Screens": "./src/Screens",
-          "Utils": "./src/Utils"
+          "Utils": "./src/Utils",
+          "Storybook": "./src/Storybook",
+          "Images": "./src/Assets/Images",
+          "Models": "./src/Models"
         }
       }
     ]

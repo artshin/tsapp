@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { View, ViewStyle } from 'react-native'
 import { Text } from 'native-base'
-import { styles } from './styles'
+import { styles } from 'Components/LabeledValue/styles'
 import { Metrics } from 'Utils'
 
-interface Props extends React.Props<View> {
-  value?: string
+export interface Props extends React.Props<View> {
   label?: string
+  value?: string
   style?: ViewStyle
 }
 
