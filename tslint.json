@@ -14,7 +14,6 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "jsx-boolean-value": false,
-    "no-unused-variable": true,
     "quotemark": [true, "single", "jsx-single"],
     "object-literal-shorthand": true
   },
