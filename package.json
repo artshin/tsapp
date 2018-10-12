@@ -11,6 +11,9 @@
     "eslint": "eslint --ext .jsx,.js ./"
   },
   "dependencies": {
+    "appcenter": "1.8.1",
+    "appcenter-analytics": "1.8.1",
+    "appcenter-crashes": "1.8.1",
     "currency.js": "1.2.1",
     "mobx": "5.5.0",
     "mobx-react": "5.2.8",
@@ -47,13 +50,13 @@
     "react-dom": "16.5.2",
     "react-native-typescript-transformer": "1.2.10",
     "react-test-renderer": "16.5.2",
+    "schedule": "0.4.0",
     "ts-jest": "23.10.4",
     "tslint": "5.11.0",
     "tslint-config-prettier": "1.15.0",
     "tslint-config-standard": "8.0.1",
     "tslint-react": "3.6.0",
-    "typescript": "3.1.3",
-    "schedule": "0.4.0"
+    "typescript": "3.1.3"
   },
   "jest": {
     "preset": "react-native",
@@ -71,6 +74,11 @@
       "\\.snap$",
       "<rootDir>/node_modules/"
     ],
-    "cacheDirectory": ".jest/cache"
+    "cacheDirectory": ".jest/cache",
+    "setupFiles": [
+      "<rootDir>/node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js",
+      "<rootDir>/node_modules/appcenter/test/AppCenterMock.js",
+      "<rootDir>/node_modules/appcenter-crashes/test/AppCenterCrashesMock.js"
+    ]
   }
 }

@@ -6,6 +6,8 @@
 #
 .jest/
 
+ios/Pods
+
 # Xcode
 #
 build/
