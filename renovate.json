@@ -1,5 +1,31 @@
 {
-  "extends": [
-    "config:base"
+  "extends": ["config:base", "group:allNonMajor"],
+  "rebaseStalePrs": true,
+  "prConcurrentLimit": 5,
+  "packageRules": [
+    {
+      "packagePatterns": ["^eslint"],
+      "groupName": "eslint packages"
+    },
+    {
+      "packagePatterns": ["(^@babel|^babel)"],
+      "groupName": "babel packages"
+    },
+    {
+      "packagePatterns": ["^react"],
+      "groupName": "react packages"
+    },
+    {
+      "packagePatterns": ["^appcenter"],
+      "groupName": "appcenter packages"
+    },
+    {
+      "packagePatterns": ["^@storybook"],
+      "groupName": "storybook packages"
+    },
+    {
+      "packagePatterns": ["^@types"],
+      "groupName": "types packages"
+    }
   ]
 }
