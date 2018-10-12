@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { StackNavigator } from 'Containers/Navigator'
+import { StackNavigator } from './src/Containers/Navigator'
 
 interface Props {}
 

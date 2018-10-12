@@ -11,7 +11,8 @@ const randomInt = (min: number, max: number): number => {
 }
 
 const generateStubData = () => {
-  const count = randomInt(1, 100)
+  const count = 40
+  // const count = randomInt(1, 100)
   const names = [
     'BTC/USD',
     'BTC/ETH',

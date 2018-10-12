@@ -8,5 +8,6 @@
   "prettier.semi": false,
   "prettier.jsxBracketSameLine": true,
   "prettier.printWidth": 100,
-  "typescript.preferences.quoteStyle": "single"
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

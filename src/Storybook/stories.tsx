@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { storiesOf } from '@storybook/react-native'
-// import { action } from '@storybook/addon-actions'
 
-import { LandingScreen } from 'Screens/LandingScreen'
-import { LabeledValue } from 'Components/LabeledValue'
+import { LandingScreen } from '../Screens/LandingScreen'
+import { LabeledValue } from '../Components/LabeledValue'
 
-import 'Components/ExchangeScreen/story'
-import 'Components/ExchangesScreen/story'
+import '../Components/ExchangeScreen/story'
+import '../Components/ExchangesScreen/story'
+
 storiesOf('Screens', module).add('Landing', () => <LandingScreen />)
 
 storiesOf('Components', module).add('Labeled Value', () => (

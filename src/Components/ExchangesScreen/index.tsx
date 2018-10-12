@@ -1,22 +1,9 @@
 /* @flow */
 import * as React from 'react'
 import { FlatList, View } from 'react-native'
-import {
-  Container,
-  Thumbnail,
-  Content,
-  Card,
-  CardItem,
-  Text,
-  Left,
-  H3,
-  Body,
-} from 'native-base'
-import {
-  LabeledValue,
-  Props as LabeledValueProps,
-} from 'Components/LabeledValue'
-import { Exchange } from 'Models'
+import { Container, Thumbnail, Content, Card, CardItem, Text, Left, H3, Body } from 'native-base'
+import { LabeledValue, Props as LabeledValueProps } from '../LabeledValue'
+import { Exchange } from '../../Models'
 
 interface Props {
   exchanges: Exchange[]
@@ -67,7 +54,7 @@ export class ExchangesScreen extends React.PureComponent<Props> {
     <Card transparent={true}>
       <CardItem>
         <Left>
-          <Thumbnail source={require('Images/launch-icon.png')} small />
+          <Thumbnail source={require('../../Assets/Images/launch-icon.png')} small />
           <Body>
             <H3>{item.name}</H3>
             <Text note={true}>{item.website}</Text>
@@ -87,17 +74,12 @@ export class ExchangesScreen extends React.PureComponent<Props> {
 
   private renderCurrencyPairPrice = (pairIndex: number, exchange: Exchange) => {
     const placeholder =
-      this.props.labeledValuePlaceholder ||
-      ExchangesScreen.defaultProps.labeledValuePlaceholder
+      this.props.labeledValuePlaceholder || ExchangesScreen.defaultProps.labeledValuePlaceholder
 
     const { pairs } = exchange
 
-    const label =
-      pairs.length > pairIndex ? pairs[pairIndex].pairName : placeholder.label
-    const value =
-      pairs.length > pairIndex
-        ? pairs[pairIndex].price.toString()
-        : placeholder.value
+    const label = pairs.length > pairIndex ? pairs[pairIndex].pairName : placeholder.label
+    const value = pairs.length > pairIndex ? pairs[pairIndex].price.toString() : placeholder.value
 
     return <LabeledValue label={label} value={value} />
   }

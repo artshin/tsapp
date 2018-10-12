@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ExchangesScreen as ExchangesScreenView } from 'Components/ExchangesScreen'
+import { ExchangesScreen as ExchangesScreenView } from '../Components/ExchangesScreen'
 
 interface Props {}
 

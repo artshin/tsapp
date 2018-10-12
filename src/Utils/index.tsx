@@ -1,1 +1,1 @@
-export * from 'Utils/Metrics'
+export * from './Metrics'

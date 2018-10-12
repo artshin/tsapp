@@ -1,16 +1,12 @@
-/* @flow */
 import React, { Component } from 'react'
-import { View, FlatList } from 'react-native'
-import { LabeledValue } from 'Components/LabeledValue'
+import { View, FlatList, Animated } from 'react-native'
+import { LabeledValue } from '../LabeledValue'
 import {
   Container,
   Content,
-  Card,
-  CardItem,
   Thumbnail,
   Text,
   Left,
-  Body,
   Grid,
   Col,
   ListItem,
@@ -19,8 +15,10 @@ import {
   TabHeading,
   Tab,
   Icon,
+  Row,
 } from 'native-base'
 import { ExchangePair } from 'Models'
+import { Metrics } from '../../Utils'
 
 enum ScreenMode {
   List = 0,
@@ -35,13 +33,15 @@ interface Props {
 
 interface State {
   screenMode: ScreenMode
+  scrollY: Animated.Value
+  offsetY: number
 }
 
-interface OnChangeTabParams {
-  i: number
-  ref: any
-  from: number
-}
+// interface OnChangeTabParams {
+//   i: number
+//   ref: any
+//   from: number
+// }
 
 export class ExchangeScreen extends Component<Props, State> {
   public static defaultProps = {
@@ -55,16 +55,67 @@ export class ExchangeScreen extends Component<Props, State> {
 
     this.state = {
       screenMode: ScreenMode.List,
+      scrollY: new Animated.Value(0),
+      offsetY: 0,
     }
   }
 
   public render() {
+    const { pairs } = this.props
+    const { screenMode } = this.state
+
+    return (
+      <View style={{ flex: 1 }}>
+        {this.renderHeader()}
+        <Tabs locked initialPage={screenMode}>
+          <Tab
+            heading={
+              <TabHeading>
+                <Icon type={'FontAwesome'} name={'list'} />
+              </TabHeading>
+            }
+          >
+            <FlatList
+              key={'list'}
+              data={pairs}
+              numColumns={1}
+              keyExtractor={this.keyExtractor}
+              renderItem={this.renderRowItem}
+              style={{ height: 300 }}
+              onScroll={Animated.event([
+                { nativeEvent: { contentOffset: { y: this.state.scrollY } } },
+              ] as any)}
+            />
+          </Tab>
+          <Tab
+            heading={
+              <TabHeading>
+                <Icon type={'MaterialCommunityIcons'} name={'grid'} />
+              </TabHeading>
+            }
+          >
+            <FlatList
+              key={'grid'}
+              data={pairs}
+              numColumns={3}
+              keyExtractor={this.keyExtractor}
+              renderItem={this.renderColumnItem}
+              onScroll={this.onListScroll}
+            />
+          </Tab>
+        </Tabs>
+      </View>
+    )
+
     return (
       <Container>
-        <Content>{this.renderList()}</Content>
+        <Content scrollEnabled={false} />
       </Container>
     )
   }
+
+  private onListScroll = () =>
+    Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }] as any)
 
   private keyExtractor = (item: ExchangePair) => item.id
 
@@ -80,95 +131,63 @@ export class ExchangeScreen extends Component<Props, State> {
   )
 
   private renderColumnItem = ({ item }: { item: ExchangePair }) => (
-    <LabeledValue
-      label={item.name}
-      value={item.price.toString()}
-      style={{ flex: 1, height: 80 }}
-    />
+    <LabeledValue label={item.name} value={item.price.toString()} style={{ flex: 1, height: 80 }} />
   )
 
-  private onChangeTab = ({ i }: OnChangeTabParams) =>
-    this.setState({ screenMode: i })
-
-  private renderListHeader = () => {
+  private renderHeader = () => {
     const { exchangeName, exchangeInfo } = this.props
-    const { screenMode } = this.state
 
     return (
-      <View>
-        <Card transparent>
-          <CardItem>
-            <Left>
-              <Thumbnail source={require('Images/launch-icon.png')} />
-              <Body>
+      <View
+        style={{
+          minHeight: 135,
+          maxHeight: 170,
+          backgroundColor: 'white',
+          shadowOpacity: 0.15,
+          shadowRadius: 2,
+          shadowOffset: {
+            height: 2,
+          },
+        }}
+      >
+        <Grid>
+          <Row>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: Metrics.baseMargin,
+              }}
+            >
+              <Thumbnail source={require('../../Assets/Images/launch-icon.png')} />
+            </View>
+            <Col
+              style={{
+                paddingLeft: Metrics.baseMargin,
+              }}
+            >
+              <Row style={{ alignItems: 'flex-end' }}>
                 <Text>{exchangeName}</Text>
+              </Row>
+              <View />
+              <Row style={{ alignItems: 'flex-start' }}>
                 <Text note>{exchangeInfo}</Text>
-              </Body>
-            </Left>
-          </CardItem>
-          <CardItem>
-            <Grid>
-              <Col>
-                <LabeledValue />
-              </Col>
-              <Col>
-                <LabeledValue />
-              </Col>
-              <Col>
-                <LabeledValue />
-              </Col>
-            </Grid>
-          </CardItem>
-        </Card>
-        <Tabs locked onChangeTab={this.onChangeTab} initialPage={screenMode}>
-          <Tab
-            heading={
-              <TabHeading>
-                <Icon type={'FontAwesome'} name={'list'} />
-              </TabHeading>
-            }
-          />
-          <Tab
-            heading={
-              <TabHeading>
-                <Icon type={'MaterialCommunityIcons'} name={'grid'} />
-              </TabHeading>
-            }
-          />
-        </Tabs>
+              </Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <LabeledValue />
+            </Col>
+            <Col>
+              <LabeledValue />
+            </Col>
+            <Col>
+              <LabeledValue />
+            </Col>
+          </Row>
+        </Grid>
       </View>
     )
-  }
-
-  private renderList = () => {
-    const { pairs } = this.props
-
-    switch (this.state.screenMode) {
-      case ScreenMode.List:
-        return (
-          <FlatList
-            key={'list'}
-            data={pairs}
-            numColumns={1}
-            keyExtractor={this.keyExtractor}
-            ListHeaderComponent={this.renderListHeader}
-            renderItem={this.renderRowItem}
-          />
-        )
-      case ScreenMode.Grid:
-        return (
-          <FlatList
-            key={'grid'}
-            data={pairs}
-            numColumns={3}
-            keyExtractor={this.keyExtractor}
-            ListHeaderComponent={this.renderListHeader}
-            renderItem={this.renderColumnItem}
-          />
-        )
-        break
-      default:
-        return null
-    }
   }
 }

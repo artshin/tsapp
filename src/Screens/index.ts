@@ -1,2 +1,2 @@
-export * from 'Screens/ExchangesScreen'
-export * from 'Screens/LandingScreen'
+export * from './ExchangesScreen'
+export * from './LandingScreen'

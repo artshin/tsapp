@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
-import { ExchangesScreen } from 'Components/ExchangesScreen'
-import { Exchange } from 'Models'
+import { ExchangesScreen } from './index'
+import { Exchange } from '../../Models'
 
 const exchanges: Exchange[] = [
   new Exchange('0', 'Bittrex', [], 'https://bittrex.com'),

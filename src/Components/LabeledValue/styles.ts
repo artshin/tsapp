@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Metrics } from 'Utils'
+import { Metrics } from '../../Utils'
 
 export const styles = StyleSheet.create({
   container: {
