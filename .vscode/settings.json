@@ -9,5 +9,11 @@
   "prettier.jsxBracketSameLine": true,
   "prettier.printWidth": 100,
   "typescript.preferences.quoteStyle": "single",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "search.exclude": {
+    "**/bower_components": false,
+    "**/bower_components/": true,
+    "**/node_modules": false,
+    "**/node_modules/": true
+  }
 }
