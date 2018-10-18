@@ -8,7 +8,7 @@ export enum Screens {
   Loading = 'Loading',
 }
 
-const MainStack = createStackNavigator(
+const MainNavigator = createStackNavigator(
   {
     [Screens.Exchanges]: ExchangesScreen,
     [Screens.Landing]: LandingScreen,
@@ -18,9 +18,9 @@ const MainStack = createStackNavigator(
   },
 )
 
-export const RootStack = createStackNavigator(
+export const RootNavigator = createStackNavigator(
   {
-    Main: MainStack,
+    Main: MainNavigator,
     [Screens.Loading]: LoadingScreen,
   },
   {

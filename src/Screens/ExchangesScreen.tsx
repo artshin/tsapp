@@ -3,6 +3,8 @@ import { Screens } from '../Containers/Navigator'
 import { ExchangesScreen as ExchangesScreenView } from '../Components/ExchangesScreen'
 import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from 'react-navigation'
 import { LoadingPropParams } from './LoadingScreen'
+import Reactotron from 'reactotron-react-native'
+import { observer, inject } from 'mobx-react'
 
 interface PropParams {
   title: string
@@ -18,7 +20,9 @@ type Props = OwnProps & NavigationInjectedProps
 
 interface State {}
 
-export class ExchangesScreen extends React.PureComponent<Props, State> {
+@inject('navigationStore')
+@observer
+export class ExchangesScreen extends React.Component<Props, State> {
   public static navigationOptions = {
     header: null,
   }
@@ -31,6 +35,7 @@ export class ExchangesScreen extends React.PureComponent<Props, State> {
     setTimeout(() => {
       this.props.navigation.pop()
     }, 2500)
+    Reactotron.log(this.props)
   }
   public render() {
     return <ExchangesScreenView exchanges={[]} />

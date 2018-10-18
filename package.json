@@ -25,6 +25,7 @@
   "devDependencies": {
     "@babel/core": "7.1.2",
     "@babel/runtime": "7.1.2",
+    "@babel/plugin-proposal-decorators": "7.1.2",
     "@storybook/addon-actions": "3.4.11",
     "@storybook/addon-links": "3.4.11",
     "@storybook/addons": "3.4.11",
