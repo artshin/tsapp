@@ -3,6 +3,7 @@
   "rebaseStalePrs": true,
   "prConcurrentLimit": 5,
   "automerge": false,
+  "ignoreDeps": ["schedule"],
   "packageRules": [
     {
       "packagePatterns": ["^eslint"],
