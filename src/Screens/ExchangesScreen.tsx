@@ -4,7 +4,10 @@ import { ExchangesScreen as ExchangesScreenView } from '../Components/ExchangesS
 import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from 'react-navigation'
 import { LoadingPropParams } from './LoadingScreen'
 import Reactotron from 'reactotron-react-native'
-import { observer, inject } from 'mobx-react'
+import { ReduxState } from '../Reducers'
+import { Dispatch, Action } from 'redux'
+import { ExchangesActions } from '../Reducers/Exchanges'
+import { connect } from 'react-redux'
 
 interface PropParams {
   title: string
@@ -20,9 +23,7 @@ type Props = OwnProps & NavigationInjectedProps
 
 interface State {}
 
-@inject('navigationStore')
-@observer
-export class ExchangesScreen extends React.Component<Props, State> {
+class ExchangesScreenContainer extends React.Component<Props, State> {
   public static navigationOptions = {
     header: null,
   }
@@ -35,9 +36,26 @@ export class ExchangesScreen extends React.Component<Props, State> {
     setTimeout(() => {
       this.props.navigation.pop()
     }, 2500)
-    Reactotron.log(this.props)
   }
+
   public render() {
     return <ExchangesScreenView exchanges={[]} />
   }
 }
+
+const mapStateToProps = (state: ReduxState) => {
+  Reactotron.log(state)
+  return {
+    exchanges: state.exchanges.exchanges,
+  }
+}
+
+// wraps dispatch to create nicer functions to call within our component
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+  getExchanges: () => dispatch(ExchangesActions.getExchanges()),
+})
+
+export const ExchangesScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ExchangesScreenContainer)
