@@ -1,12 +1,31 @@
 import { createStackNavigator } from 'react-navigation'
-import { ExchangesScreen, LandingScreen } from '../Screens'
+import { ExchangesScreen, LandingScreen, LoadingScreen } from '../Screens'
+import { FadeTransitionConfig } from '../Utils/Transitions'
 
-export const StackNavigator = createStackNavigator(
+export enum Screens {
+  Landing = 'Landing',
+  Exchanges = 'Exchanges',
+  Loading = 'Loading',
+}
+
+const MainNavigator = createStackNavigator(
   {
-    Exchanges: ExchangesScreen,
-    Landing: LandingScreen,
+    [Screens.Exchanges]: ExchangesScreen,
+    [Screens.Landing]: LandingScreen,
   },
   {
-    initialRouteName: 'Landing',
+    initialRouteName: Screens.Exchanges,
+  },
+)
+
+export const RootNavigator = createStackNavigator(
+  {
+    Main: MainNavigator,
+    [Screens.Loading]: LoadingScreen,
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+    transitionConfig: FadeTransitionConfig,
   },
 )

@@ -1,5 +1,5 @@
 import { AppRegistry } from 'react-native'
-import App from './App'
+import App from './src/App'
 import appData from './app.json'
 import StorybookUIHMRRoot from './src/Storybook'
 
