@@ -1,13 +1,12 @@
 import * as React from 'react'
-import { Screens } from '../Containers/Navigator'
-import { ExchangesScreen as ExchangesScreenView } from '../Components/ExchangesScreen'
+import { Screens } from '../../Containers/Navigator'
+import { ExchangesScreen as ExchangesScreenView } from './Component'
 import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from 'react-navigation'
-import { LoadingPropParams } from './LoadingScreen'
-import Reactotron from 'reactotron-react-native'
-import { ReduxState } from '../Reducers'
-import { Dispatch, Action } from 'redux'
-import { ExchangesActions } from '../Reducers/Exchanges'
+import { LoadingPropParams } from '../../Screens/LoadingScreen'
+import { ReduxState, ReduxDispatch } from '../../Reducers'
+import { getExchanges } from './actions'
 import { connect } from 'react-redux'
+import Reactotron from 'reactotron-react-native'
 
 interface PropParams {
   title: string
@@ -17,6 +16,7 @@ interface StateParams extends NavigationState {
 }
 interface OwnProps {
   navigation: NavigationScreenProp<StateParams>
+  getExchanges: () => void
 }
 
 type Props = OwnProps & NavigationInjectedProps
@@ -29,30 +29,37 @@ class ExchangesScreenContainer extends React.Component<Props, State> {
   }
 
   public componentDidMount() {
-    const loadingParams: LoadingPropParams = {
-      animated: false,
-    }
-    this.props.navigation.navigate(Screens.Loading, loadingParams)
-    setTimeout(() => {
-      this.props.navigation.pop()
-    }, 2500)
+    this.playLoadingAnimation()
+    this.props.getExchanges()
+    // Reactotron.log(this.props.getExchanges())
   }
 
   public render() {
     return <ExchangesScreenView exchanges={[]} />
   }
+
+  private playLoadingAnimation = () => {
+    const loadingParams: LoadingPropParams = {
+      animated: false,
+    }
+
+    this.props.navigation.navigate(Screens.Loading, loadingParams)
+
+    setTimeout(() => {
+      this.props.navigation.pop()
+    }, 2500)
+  }
 }
 
 const mapStateToProps = (state: ReduxState) => {
-  Reactotron.log(state)
   return {
     exchanges: state.exchanges.exchanges,
   }
 }
 
 // wraps dispatch to create nicer functions to call within our component
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
-  getExchanges: () => dispatch(ExchangesActions.getExchanges()),
+const mapDispatchToProps = (dispatch: ReduxDispatch) => ({
+  getExchanges: () => dispatch(getExchanges()),
 })
 
 export const ExchangesScreen = connect(

@@ -1,6 +1,7 @@
 import { createStackNavigator } from 'react-navigation'
-import { ExchangesScreen, LandingScreen, LoadingScreen } from '../Screens'
+import { LandingScreen, LoadingScreen } from '../Screens'
 import { FadeTransitionConfig } from '../Utils/Transitions'
+import { ExchangesScreen } from '../Features/Exchanges'
 
 export enum Screens {
   Landing = 'Landing',

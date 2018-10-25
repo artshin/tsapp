@@ -6,7 +6,7 @@ import { LandingScreen } from '../Screens/LandingScreen'
 import { LabeledValue } from '../Components/LabeledValue'
 
 import '../Components/ExchangeScreen/story'
-import '../Components/ExchangesScreen/story'
+import '../Features/Exchanges'
 
 storiesOf('Screens', module).add('Landing', () => <LandingScreen />)
 

@@ -2,8 +2,8 @@
 import * as React from 'react'
 import { FlatList, View } from 'react-native'
 import { Container, Thumbnail, Content, Card, CardItem, Text, Left, H3, Body } from 'native-base'
-import { LabeledValue, Props as LabeledValueProps } from '../LabeledValue'
-import { Exchange } from '../../Models'
+import { LabeledValue, Props as LabeledValueProps } from '../../../Components/LabeledValue'
+import { Exchange } from '../../../Models'
 
 interface Props {
   exchanges: Exchange[]
@@ -54,7 +54,7 @@ export class ExchangesScreen extends React.PureComponent<Props> {
     <Card transparent={true}>
       <CardItem>
         <Left>
-          <Thumbnail source={require('../../Assets/Images/launch-icon.png')} small />
+          <Thumbnail source={require('../../../Assets/Images/launch-icon.png')} small />
           <Body>
             <H3>{item.name}</H3>
             <Text note={true}>{item.website}</Text>
