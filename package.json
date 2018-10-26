@@ -11,7 +11,7 @@
     "eslint": "eslint --ext .jsx,.js ./"
   },
   "dependencies": {
-    "apisauce": "^1.0.0",
+    "apisauce": "1.0.0",
     "appcenter": "1.9.0",
     "appcenter-analytics": "1.9.0",
     "appcenter-crashes": "1.9.0",
@@ -22,7 +22,7 @@
     "react-navigation": "2.18.2",
     "react-redux": "5.1.0",
     "redux": "4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "2.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
@@ -55,7 +55,7 @@
     "react-native-typescript-transformer": "1.2.10",
     "react-test-renderer": "16.6.0",
     "reactotron-react-native": "2.1.0",
-    "reactotron-redux": "^2.1.0",
+    "reactotron-redux": "2.1.0",
     "ts-jest": "23.10.4",
     "tslint": "5.11.0",
     "tslint-config-prettier": "1.15.0",

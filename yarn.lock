@@ -1215,7 +1215,7 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apisauce@^1.0.0:
+apisauce@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/apisauce/-/apisauce-1.0.0.tgz#4f64fbd1fdbe09459f5c6189e69a8b66d183d0d4"
   integrity sha512-9dH0hravGE4cNmdG5GZQHw5e+bgeH77OGfz1h3OO9ahIlKNh3LNAyfCHF5YpqAAey3kgSTqHCKn0aivBSUrjfw==
@@ -9333,7 +9333,7 @@ reactotron-react-native@2.1.0:
     prop-types "^15.5.10"
     reactotron-core-client "^2.1.0"
 
-reactotron-redux@^2.1.0:
+reactotron-redux@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/reactotron-redux/-/reactotron-redux-2.1.0.tgz#69568912e2894cb3d996843bdaa759c3ec59a45a"
   integrity sha512-HWfDIZN5stZJrdQXp5AWgH12rgGLpXoSV2rC3va0BP9XxwgG+SKA1f2DQ8W2MrDz5wZ47PGLfhHPjqJQUM20dQ==
@@ -9466,7 +9466,7 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-thunk@^2.3.0:
+redux-thunk@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
