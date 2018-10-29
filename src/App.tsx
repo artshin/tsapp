@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RootNavigator } from './Containers/Navigator'
+import { RootNavigator } from './Containers'
 import createStore from './Reducers'
 import './Utils/ReactotronConfig'
 import { Provider } from 'react-redux'

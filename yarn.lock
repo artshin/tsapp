@@ -1774,10 +1774,13 @@ apisauce@1.0.0:
     axios "^0.18.0"
     ramda "^0.25.0"
 
-app-root-dir@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/app-root-dir/-/app-root-dir-1.0.2.tgz#38187ec2dea7577fff033ffcb12172692ff6e118"
-  integrity sha1-OBh+wt6nV3//Az/8sSFyaS/24Rg=
+apisauce@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/apisauce/-/apisauce-0.16.0.tgz#5620624ffe56d755f66a7ab738138e5ff74f25f6"
+  integrity sha512-aDHJLhpBjIpv9hxZPsajkYqLtNZAkcWHBqeJZfVNrDE9pj0HZVv60HQUqs6vjGsb5p2WR26exdGA5SdoAWAH5A==
+  dependencies:
+    axios "^0.18.0"
+    ramda "^0.25.0"
 
 appcenter-analytics@1.9.0:
   version "1.9.0"
@@ -9335,6 +9338,14 @@ react@16.6.1:
     prop-types "^15.6.2"
     scheduler "^0.11.0"
 
+reactotron-apisauce@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/reactotron-apisauce/-/reactotron-apisauce-2.1.0.tgz#082a452e9466f7cb2d75f92674f62d50ddc677a9"
+  integrity sha512-WgP3eYQdbTmivIOrsGfURKLmyZ5NLKFtodNToV2+yq2wgE7YYqEgvHb3syhIUL/A4OC0LhLwwagUe+hzNKhahw==
+  dependencies:
+    apisauce "^0.16.0"
+    reactotron-core-client "^2.1.0"
+
 reactotron-core-client@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/reactotron-core-client/-/reactotron-core-client-2.1.0.tgz#d36f806eaf14a9f8c4595a9866f8cbfaafc1ee8c"
@@ -9830,7 +9841,7 @@ rx@^4.1.0:
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
   integrity sha1-pfE/957zt0D+MKqAP7CfmIBdR4I=
 
-rxjs@^6.1.0:
+rxjs@^6.1.0, rxjs@^6.2.2:
   version "6.3.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
   integrity sha512-JTWmoY9tWCs7zvIk/CvRjhjGaOd+OVBM987mxFo+OW66cGpdKjZcpmc74ES1sB//7Kl/PAe8+wEakuhG4pcgOw==

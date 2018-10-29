@@ -1,3 +1,6 @@
-import { CoinbaseAPI } from './Coinbase'
+import { ExchangesAPI } from './ExchangesAPI'
+import { BinanceAPI } from './BinanceAPI'
+import { CoinbaseAPI } from './CoinbaseAPI'
+import { BittrexAPI } from './BittrexAPI'
 
-export { CoinbaseAPI }
+export { ExchangesAPI, BinanceAPI, CoinbaseAPI, BittrexAPI }

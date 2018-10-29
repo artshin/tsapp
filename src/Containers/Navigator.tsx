@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation'
-import { LandingScreen, LoadingScreen } from '../Screens'
+import { LandingScreen, LoadingScreen } from '../Containers'
 import { FadeTransitionConfig } from '../Utils/Transitions'
 import { ExchangesScreen } from '../Features/Exchanges'
 

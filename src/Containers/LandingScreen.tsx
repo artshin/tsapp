@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { LandingScreen as LandingScreenView } from '../Components/LandingScreen'
-import { Screens } from '../Containers/Navigator'
+import { Screens } from '../Containers'
 import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from 'react-navigation'
 
 interface PropParams {

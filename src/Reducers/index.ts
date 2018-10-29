@@ -10,11 +10,13 @@ import {
 import { reducer as exchangesReducer, ExchangesState } from '../Features/Exchanges/reducer'
 import thunk, { ThunkDispatch } from 'redux-thunk'
 import Reactotron from '../Utils/ReactotronConfig'
-import { reducer as loadingReducer, LoadingReducer } from './LoadingReducer'
+import { loadingReducer, LoadingReducer } from './LoadingReducer'
+import { errorReducer, ErrorReducer } from './ErrorReducer'
 
 export interface ReduxState {
   exchanges: ExchangesState
   loadingReducer: LoadingReducer
+  errorReducer: ErrorReducer
 }
 
 export type ReduxDispatch = ThunkDispatch<ReduxState, undefined, Action>
@@ -23,6 +25,7 @@ export default () => {
   const rootReducer = combineReducers({
     exchanges: exchangesReducer,
     loading: loadingReducer,
+    errors: errorReducer,
   })
 
   const middleware: Middleware[] = []
