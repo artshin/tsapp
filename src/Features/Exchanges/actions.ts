@@ -34,5 +34,7 @@ export const getMarketsForAllExchanges = (): ThunkResult<void> => async dispatch
       const markets = await api.getMarkets()
       Reactotron.log(markets)
     })
-  } catch {}
+  } catch (error) {
+    // console.error(error.message)
+  }
 }
