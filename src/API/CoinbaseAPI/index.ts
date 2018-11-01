@@ -1,7 +1,7 @@
 // COINBASE API Client
 // https://docs.pro.coinbase.com/
 import { APIClient } from '../BaseAPI'
-// import { ExchageInfo, SymbolType } from './types'
+import { Product } from './types'
 import { Market } from '../../Models'
 
 enum Endpoint {
@@ -14,9 +14,9 @@ class CoinbaseAPIClient extends APIClient {
 
 export const CoinbaseAPI = new CoinbaseAPIClient('https://api.pro.coinbase.com')
 
-// const convertSymbolsToMarkets = (symbols: SymbolType[]) =>
-//   symbols.map(el => new Market(el.symbol, el.baseAsset + el.quoteAsset))
+const convertProductsToMarkets = (products: Product[]) =>
+  products.map(el => new Market(el.id, el.base_currency + el.quote_currency))
 
-// BinanceAPI.addEndpointResponseTransform<ExchageInfo, Market[]>(Endpoint.GetMarkets, responseData =>
-//   convertSymbolsToMarkets(responseData.symbols),
-// )
+CoinbaseAPI.addEndpointResponseTransform<Product[], Market[]>(Endpoint.GetMarkets, responseData =>
+  convertProductsToMarkets(responseData),
+)
