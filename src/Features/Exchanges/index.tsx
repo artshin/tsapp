@@ -3,7 +3,7 @@ import { Screens, LoadingPropParams } from '../../Containers'
 import { ExchangesScreen as ExchangesScreenView } from './Components'
 import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from 'react-navigation'
 import { ReduxState, ReduxDispatch } from '../../Reducers'
-import { getExchanges, getMarketsForAllExchanges } from './actions'
+import { getExchanges } from './actions'
 import { connect } from 'react-redux'
 import { Exchange } from 'Models'
 
@@ -34,8 +34,8 @@ class ExchangesScreenContainer extends React.Component<Props, State> {
       this.playLoadingAnimation()
     }
 
-    this.props.getExchanges()
-    this.props.getMarketsForAllExchanges()
+    // this.props.getExchanges()
+    // this.props.getMarketsForAllExchanges()
   }
 
   public render() {
@@ -64,7 +64,6 @@ const mapStateToProps = (state: ReduxState) => {
 // wraps dispatch to create nicer functions to call within our component
 const mapDispatchToProps = (dispatch: ReduxDispatch) => ({
   getExchanges: () => dispatch(getExchanges()),
-  getMarketsForAllExchanges: () => dispatch(getMarketsForAllExchanges()),
 })
 
 export const ExchangesScreen = connect(

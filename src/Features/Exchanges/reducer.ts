@@ -8,7 +8,7 @@ enum ExchangesActionTypes {
   GET_EXCHANGES_FAILURE = 'tsapp/exchanges/GET_EXCHANGES_FAILURE',
 }
 
-export const Actions = {
+export const ExchangesActions = {
   getExchangesRequest: () => createAction(ExchangesActionTypes.GET_EXCHANGES_REQUEST),
   getExchangesSuccess: (exchangeById: ExchangeById, allIds: string[]) =>
     createAction(ExchangesActionTypes.GET_EXCHANGES_SUCCESS, { exchangeById, allIds }),
@@ -16,7 +16,7 @@ export const Actions = {
     createAction(ExchangesActionTypes.GET_EXCHANGES_FAILURE, { error }),
 }
 
-export type Actions = ActionsUnion<typeof Actions>
+export type Actions = ActionsUnion<typeof ExchangesActions>
 
 // Reducer
 export interface ExchangeById {

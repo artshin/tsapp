@@ -15,7 +15,7 @@ const MainNavigator = createStackNavigator(
     [Screens.Landing]: LandingScreen,
   },
   {
-    initialRouteName: Screens.Exchanges,
+    initialRouteName: Screens.Landing,
   },
 )
 

@@ -1,21 +1,19 @@
 // BINANCE API Client
 // https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md
-import { create, ApisauceInstance, ApiResponse } from 'apisauce'
+import { create, ApisauceInstance } from 'apisauce'
 import Reactotron from 'reactotron-react-native'
 
-export const createBaseClient = (baseURL: string) => {
-  const apiClient = create({
-    baseURL,
-  })
-  apiClient.addMonitor(Reactotron.apisauce)
-  return apiClient
-}
-
-export class APIClient {
+export class BaseExchangeClient {
+  protected name = 'baseapi'
   protected apisauceClient: ApisauceInstance
 
   public constructor(baseURL: string) {
     this.apisauceClient = create({ baseURL })
+    this.apisauceClient.addMonitor(Reactotron.apisauce)
+  }
+
+  public getMarkets = () => {
+    /* does nothing by default, intended to be implemented in subclass */
   }
 
   public addEndpointResponseTransform<T, U>(endpoint: string, callback: (responseData: T) => U) {

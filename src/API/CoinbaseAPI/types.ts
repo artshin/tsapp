@@ -1,3 +1,26 @@
+/**
+ * Example:
+ *  {
+ *    "id": "BCH-GBP",
+ *    "base_currency": "BCH",
+ *    "quote_currency": "GBP",
+ *    "base_min_size": "0.01000000",
+ *    "base_max_size": "120.00000000",
+ *    "quote_increment": "0.01000000",
+ *    "display_name": "BCH/GBP",
+ *    "status": "online",
+ *    "margin_enabled": false,
+ *    "status_message": null,
+ *    "min_market_funds": "10",
+ *    "max_market_funds": "1000000",
+ *    "post_only": false,
+ *    "limit_only": false,
+ *    "cancel_only": false
+ *  }
+ * @export
+ * @interface Product
+ */
+
 export interface Product {
   id: string
   base_currency: string
