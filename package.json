@@ -39,7 +39,7 @@
     "@types/react-navigation": "2.13.0",
     "@types/react-redux": "6.0.9",
     "@types/react-test-renderer": "16.0.3",
-    "@types/storybook__react": "3.0.9",
+    "@types/storybook__react": "4.0.0",
     "@types/storybook__react-native": "3.0.2",
     "babel-jest": "23.6.0",
     "eslint": "5.8.0",
