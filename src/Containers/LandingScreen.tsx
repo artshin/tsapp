@@ -5,6 +5,8 @@ import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from '
 import { loadAppData } from '../Actions'
 import { ReduxState, ReduxDispatch } from '../Reducers'
 import { connect } from 'react-redux'
+import { AppStatus } from '../Reducers/AppReducer'
+import Reactotron from 'reactotron-react-native'
 
 interface PropParams {
   title: string
@@ -15,31 +17,47 @@ interface StateParams extends NavigationState {
 interface OwnProps {
   navigation: NavigationScreenProp<StateParams>
   loadAppData: () => void
+  appFinishedLoading: boolean
 }
 
 type Props = OwnProps & NavigationInjectedProps
 
-interface State {}
+interface State {
+  loadingAnimationFinished: boolean
+}
 
 export class LandingScreenContainer extends React.PureComponent<Props, State> {
   public static navigationOptions = {
     header: null,
   }
+
+  constructor(props: Props) {
+    super(props)
+
+    this.state = {
+      loadingAnimationFinished: false,
+    }
+  }
+
   public componentDidMount() {
     this.props.loadAppData()
-    setTimeout(() => {
+    setTimeout(() => this.setState({ loadingAnimationFinished: true }), 3500 /* whatever */)
+  }
+
+  public componentDidUpdate() {
+    if (this.props.appFinishedLoading && this.state.loadingAnimationFinished) {
       this.props.navigation.navigate(Screens.Exchanges)
-    }, 500)
+    }
   }
 
   public render() {
-    return <LandingScreenView />
+    return <LandingScreenView loading={!this.props.appFinishedLoading} />
   }
 }
 
 const mapStateToProps = (state: ReduxState) => {
   return {
-    exchanges: state.exchanges.allIds.map(id => state.exchanges.byId[id]),
+    appFinishedLoading: state.app.appStatus === AppStatus.Ready,
   }
 }
 

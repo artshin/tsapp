@@ -1,6 +1,6 @@
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
-import { MarketsActions, MarketById } from './reducer'
+import { MarketsActions } from './reducer'
 import { ReduxState } from 'Reducers'
 import { exchangeApiByName } from '../../API'
 import Reactotron from 'reactotron-react-native'

@@ -3,7 +3,6 @@ import { ThunkAction } from 'redux-thunk'
 import { ExchangesActions, ExchangeById } from './reducer'
 import { ReduxState } from 'Reducers'
 import { ExchangesAPI } from '../../API'
-import Reactotron from 'reactotron-react-native'
 
 type ThunkResult<R> = ThunkAction<R, ReduxState, undefined, Action>
 
@@ -22,7 +21,6 @@ export const getExchanges = (): ThunkResult<void> => async dispatch => {
       })
 
       dispatch(ExchangesActions.getExchangesSuccess(exchangesById, ids))
-      Reactotron.log(2)
       resolve()
     } catch (error) {
       dispatch(ExchangesActions.getExchangesFailure(error.message))

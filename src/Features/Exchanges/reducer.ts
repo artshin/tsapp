@@ -23,17 +23,17 @@ export interface ExchangeById {
   [exchangeId: string]: Exchange
 }
 
-export interface ExchangesState {
+export interface ExchangesReducer {
   readonly byId: ExchangeById
   readonly allIds: string[]
 }
 
-const InitialState: ExchangesState = {
+const InitialState: ExchangesReducer = {
   byId: {},
   allIds: [],
 }
 
-export function reducer(state: ExchangesState = InitialState, action: Actions) {
+export function reducer(state: ExchangesReducer = InitialState, action: Actions) {
   switch (action.type) {
     case ExchangesActionTypes.GET_EXCHANGES_SUCCESS:
       return { ...state, byId: action.payload.exchangeById, allIds: action.payload.allIds }

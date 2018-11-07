@@ -33,9 +33,6 @@ class ExchangesScreenContainer extends React.Component<Props, State> {
     if (!__DEV__) {
       this.playLoadingAnimation()
     }
-
-    // this.props.getExchanges()
-    // this.props.getMarketsForAllExchanges()
   }
 
   public render() {
