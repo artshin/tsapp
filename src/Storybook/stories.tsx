@@ -2,7 +2,7 @@ import React from 'react'
 
 import { storiesOf } from '@storybook/react-native'
 
-import { LandingScreen } from '../Screens/LandingScreen'
+import { LandingScreen } from '../Containers'
 import { LabeledValue } from '../Components/LabeledValue'
 
 import '../Components/ExchangeScreen/story'

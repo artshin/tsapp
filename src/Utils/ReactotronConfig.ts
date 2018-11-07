@@ -5,12 +5,8 @@ interface ReduxInterface extends Reactotron.Reactotron {
   createStore?: (rootReducer: any, middleware: any) => {}
 }
 
-const reactotron: ReduxInterface = Reactotron.default
+export const reactotron: ReduxInterface = Reactotron.default
   .configure() // controls connection & communication settings
   .useReactNative() // add all built-in react native plugins
   .use(reactotronRedux())
-  .connect() // let's connect!
-
-reactotron.clear()
-
-export default reactotron
+  .use(Reactotron.storybook())

@@ -1,38 +1,43 @@
-import { Action } from 'redux'
+import { Exchange } from '../../Models'
+import { ActionsUnion, createAction } from '@martin_hotell/rex-tils'
 
+// Actions
 enum ExchangesActionTypes {
   GET_EXCHANGES_REQUEST = 'tsapp/exchanges/GET_EXCHANGES_REQUEST',
   GET_EXCHANGES_SUCCESS = 'tsapp/exchanges/GET_EXCHANGES_SUCCESS',
   GET_EXCHANGES_FAILURE = 'tsapp/exchanges/GET_EXCHANGES_FAILURE',
 }
 
-export interface ExchangesState {
-  readonly loading: boolean
-  readonly exchanges: any[]
+export const ExchangesActions = {
+  getExchangesRequest: () => createAction(ExchangesActionTypes.GET_EXCHANGES_REQUEST),
+  getExchangesSuccess: (exchangeById: ExchangeById, allIds: string[]) =>
+    createAction(ExchangesActionTypes.GET_EXCHANGES_SUCCESS, { exchangeById, allIds }),
+  getExchangesFailure: (error: string) =>
+    createAction(ExchangesActionTypes.GET_EXCHANGES_FAILURE, { error }),
 }
 
-const InitialState: ExchangesState = {
-  loading: false,
-  exchanges: [],
-}
+export type Actions = ActionsUnion<typeof ExchangesActions>
 
 // Reducer
-export function reducer(state: ExchangesState = InitialState, action: Action) {
+export interface ExchangeById {
+  [exchangeId: string]: Exchange
+}
+
+export interface ExchangesReducer {
+  readonly byId: ExchangeById
+  readonly allIds: string[]
+}
+
+const InitialState: ExchangesReducer = {
+  byId: {},
+  allIds: [],
+}
+
+export function reducer(state: ExchangesReducer = InitialState, action: Actions) {
   switch (action.type) {
     case ExchangesActionTypes.GET_EXCHANGES_SUCCESS:
-      return { ...state, exchanges: ['yo'] }
+      return { ...state, byId: action.payload.exchangeById, allIds: action.payload.allIds }
     default:
       return state
   }
-}
-
-// Action Creators
-const getExchangesRequest = (): Action => ({ type: ExchangesActionTypes.GET_EXCHANGES_REQUEST })
-const getExchangesSuccess = (): Action => ({ type: ExchangesActionTypes.GET_EXCHANGES_SUCCESS })
-const getExchangesFailure = (): Action => ({ type: ExchangesActionTypes.GET_EXCHANGES_FAILURE })
-
-export const ExchangesActions = {
-  getExchangesRequest,
-  getExchangesSuccess,
-  getExchangesFailure,
 }

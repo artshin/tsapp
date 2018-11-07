@@ -2,7 +2,7 @@ import { Action } from 'redux'
 export interface LoadingReducer {}
 
 // Reducer
-export function reducer(state: LoadingReducer = {}, action: Action) {
+export function loadingReducer(state: LoadingReducer = {}, action: Action) {
   const { type } = action
   const matches = /(.*)_(REQUEST|SUCCESS|FAILURE)/.exec(type)
 

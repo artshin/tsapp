@@ -6,23 +6,30 @@ import {
   StoreEnhancer,
   compose,
   Action,
+  Store,
 } from 'redux'
-import { reducer as exchangesReducer, ExchangesState } from '../Features/Exchanges/reducer'
+import { reducer as exchangesReducer, ExchangesReducer } from '../Features/Exchanges/reducer'
 import thunk, { ThunkDispatch } from 'redux-thunk'
-import Reactotron from '../Utils/ReactotronConfig'
-import { reducer as loadingReducer, LoadingReducer } from './LoadingReducer'
+import { loadingReducer, LoadingReducer } from './LoadingReducer'
+import { errorReducer, ErrorReducer } from './ErrorReducer'
+import { appReducer, AppReducer } from './AppReducer'
+import { reactotron } from '../Utils/ReactotronConfig'
 
 export interface ReduxState {
-  exchanges: ExchangesState
+  exchanges: ExchangesReducer
   loadingReducer: LoadingReducer
+  errorReducer: ErrorReducer
+  app: AppReducer
 }
 
 export type ReduxDispatch = ThunkDispatch<ReduxState, undefined, Action>
 
-export default () => {
+export default (): Store => {
   const rootReducer = combineReducers({
     exchanges: exchangesReducer,
     loading: loadingReducer,
+    errors: errorReducer,
+    app: appReducer,
   })
 
   const middleware: Middleware[] = []
@@ -31,8 +38,9 @@ export default () => {
   middleware.push(thunk)
   enhancers.push(applyMiddleware(...middleware))
 
-  if (__DEV__ && Reactotron.createStore) {
-    return Reactotron.createStore(rootReducer, compose(...enhancers))
+  if (__DEV__ && reactotron.createStore) {
+    return reactotron.createStore(rootReducer, compose(...enhancers))
   }
+
   return createStore(rootReducer, compose(...enhancers))
 }

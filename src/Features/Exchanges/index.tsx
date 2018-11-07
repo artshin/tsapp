@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { Screens } from '../../Containers/Navigator'
-import { ExchangesScreen as ExchangesScreenView } from './Component'
+import { Screens, LoadingPropParams } from '../../Containers'
+import { ExchangesScreen as ExchangesScreenView } from './Components'
 import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from 'react-navigation'
-import { LoadingPropParams } from '../../Screens/LoadingScreen'
 import { ReduxState, ReduxDispatch } from '../../Reducers'
 import { getExchanges } from './actions'
 import { connect } from 'react-redux'
-import Reactotron from 'reactotron-react-native'
+import { Exchange } from 'Models'
 
 interface PropParams {
   title: string
@@ -17,6 +16,8 @@ interface StateParams extends NavigationState {
 interface OwnProps {
   navigation: NavigationScreenProp<StateParams>
   getExchanges: () => void
+  getMarketsForAllExchanges: () => void
+  exchanges: Exchange[]
 }
 
 type Props = OwnProps & NavigationInjectedProps
@@ -29,13 +30,13 @@ class ExchangesScreenContainer extends React.Component<Props, State> {
   }
 
   public componentDidMount() {
-    this.playLoadingAnimation()
-    this.props.getExchanges()
-    // Reactotron.log(this.props.getExchanges())
+    if (!__DEV__) {
+      this.playLoadingAnimation()
+    }
   }
 
   public render() {
-    return <ExchangesScreenView exchanges={[]} />
+    return <ExchangesScreenView exchanges={this.props.exchanges} />
   }
 
   private playLoadingAnimation = () => {
@@ -53,7 +54,7 @@ class ExchangesScreenContainer extends React.Component<Props, State> {
 
 const mapStateToProps = (state: ReduxState) => {
   return {
-    exchanges: state.exchanges.exchanges,
+    exchanges: state.exchanges.allIds.map(id => state.exchanges.byId[id]),
   }
 }
 

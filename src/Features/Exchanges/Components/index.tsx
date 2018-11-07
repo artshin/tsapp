@@ -4,6 +4,8 @@ import { FlatList, View } from 'react-native'
 import { Container, Thumbnail, Content, Card, CardItem, Text, Left, H3, Body } from 'native-base'
 import { LabeledValue, Props as LabeledValueProps } from '../../../Components/LabeledValue'
 import { Exchange } from '../../../Models'
+import { SafeAreaView } from 'react-navigation'
+import { Colors } from '../../../Utils'
 
 interface Props {
   exchanges: Exchange[]
@@ -36,22 +38,24 @@ export class ExchangesScreen extends React.PureComponent<Props> {
     const { exchanges } = this.props
 
     return (
-      <Container>
-        <Content>
-          <FlatList
-            data={exchanges}
-            keyExtractor={this.keyExtractor}
-            renderItem={this.renderItem}
-          />
-        </Content>
-      </Container>
+      <SafeAreaView style={{ flex: 1, backgroundColor: Colors.White }}>
+        <Container>
+          <Content padder>
+            <FlatList
+              data={exchanges}
+              keyExtractor={this.keyExtractor}
+              renderItem={this.renderItem}
+            />
+          </Content>
+        </Container>
+      </SafeAreaView>
     )
   }
 
   private keyExtractor = (item: Exchange) => item.id
 
   private renderItem = ({ item }: { item: Exchange }) => (
-    <Card transparent={true}>
+    <Card>
       <CardItem>
         <Left>
           <Thumbnail source={require('../../../Assets/Images/launch-icon.png')} small />
