@@ -14,8 +14,6 @@ export default class App extends React.Component<Props> {
     reactotron.connect().clear()
   }
 
-  public componentDidMount() {}
-
   public render() {
     if (!this.store) {
       return null
