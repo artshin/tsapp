@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 import { LandingScreen, LoadingScreen } from '../Containers'
 import { FadeTransitionConfig } from '../Utils/Transitions'
 import { ExchangesScreen } from '../Features/Exchanges'
@@ -30,3 +30,5 @@ export const RootNavigator = createStackNavigator(
     transitionConfig: FadeTransitionConfig,
   },
 )
+
+export const AppContainer = createAppContainer(RootNavigator)

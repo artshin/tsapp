@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RootNavigator } from './Containers'
+import { AppContainer } from './Containers'
 import createStore from './Reducers'
 import { reactotron } from './Utils/ReactotronConfig'
 import { Provider } from 'react-redux'
@@ -21,7 +21,7 @@ export default class App extends React.Component<Props> {
 
     return (
       <Provider store={this.store}>
-        <RootNavigator />
+        <AppContainer />
       </Provider>
     )
   }

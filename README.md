@@ -1,9 +1,8 @@
 ## TODO:
 
-1. Redux store + TS
-2. Redux sagas + TS
-3. Redux form + TS
-4. Redux Navigation + TS
+1. Telegram client tools. Scheduled messages.
+2. Crypto exchanges api clients
+3. Markdown blog posts
 
 ## NativeBase notes
 
