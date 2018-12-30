@@ -6,7 +6,6 @@ import { loadAppData } from '../Actions'
 import { ReduxState, ReduxDispatch } from '../Reducers'
 import { connect } from 'react-redux'
 import { AppStatus } from '../Reducers/AppReducer'
-import Reactotron from 'reactotron-react-native'
 
 interface PropParams {
   title: string
