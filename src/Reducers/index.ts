@@ -9,6 +9,7 @@ import {
   Store,
 } from 'redux'
 import { reducer as exchangesReducer, ExchangesReducer } from '../Features/Exchanges/reducer'
+import { reducer as billsReducer, BillsReducer } from '../Features/Bills/reducer'
 import thunk, { ThunkDispatch } from 'redux-thunk'
 import { loadingReducer, LoadingReducer } from './LoadingReducer'
 import { errorReducer, ErrorReducer } from './ErrorReducer'
@@ -16,6 +17,7 @@ import { appReducer, AppReducer } from './AppReducer'
 import { reactotron } from '../Utils/ReactotronConfig'
 
 export interface ReduxState {
+  bills: BillsReducer
   exchanges: ExchangesReducer
   loadingReducer: LoadingReducer
   errorReducer: ErrorReducer
@@ -26,6 +28,7 @@ export type ReduxDispatch = ThunkDispatch<ReduxState, undefined, Action>
 
 export default (): Store => {
   const rootReducer = combineReducers({
+    bills: billsReducer,
     exchanges: exchangesReducer,
     loading: loadingReducer,
     errors: errorReducer,
