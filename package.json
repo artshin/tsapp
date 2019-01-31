@@ -44,7 +44,7 @@
     "@types/react-test-renderer": "16.0.3",
     "@types/storybook__react": "4.0.0",
     "@types/storybook__react-native": "3.0.3",
-    "babel-jest": "23.6.0",
+    "babel-jest": "24.0.0",
     "eslint": "5.12.1",
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-import": "2.14.0",
