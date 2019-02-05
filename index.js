@@ -5,7 +5,7 @@ import StorybookUIHMRRoot from './src/Storybook'
 import Reactotron from 'reactotron-react-native'
 
 // Storybook
-// AppRegistry.registerComponent(appData.name, () => StorybookUIHMRRoot)
+AppRegistry.registerComponent(appData.name, () => StorybookUIHMRRoot)
 
 // App
-AppRegistry.registerComponent(appData.name, () => App)
+// AppRegistry.registerComponent(appData.name, () => App)

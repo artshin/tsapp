@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react-native'
 import { LandingScreen } from '../Containers'
 import { LabeledValue } from '../Components/LabeledValue'
 
+import '../Components/BillItem/story'
 import '../Components/ExchangeScreen/story'
 import '../Features/Exchanges'
 

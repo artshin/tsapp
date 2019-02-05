@@ -24,7 +24,7 @@ class BillsContainer extends React.Component<Props, State> {
   }
 
   public render() {
-    return <View style={{ flex: 1, backgroundColor: 'green' }} />
+    return <View style={{ flex: 1 }} />
   }
 }
 
