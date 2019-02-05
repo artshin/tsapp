@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { View } from 'react-native'
 import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from 'react-navigation'
 import { ReduxState, ReduxDispatch } from '../../Reducers'
 import { connect } from 'react-redux'
+import { BillsScreen as BillsScreenView } from './Components/BillsScreen'
 
 interface PropParams {
   title: string
@@ -24,7 +24,7 @@ class BillsContainer extends React.Component<Props, State> {
   }
 
   public render() {
-    return <View style={{ flex: 1 }} />
+    return <BillsScreenView />
   }
 }
 

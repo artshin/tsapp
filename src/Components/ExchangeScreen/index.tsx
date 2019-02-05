@@ -17,7 +17,7 @@ import {
   Icon,
   Row,
 } from 'native-base'
-import { ExchangePair } from 'Models'
+import { ExchangePair } from '../../Models'
 import { Metrics } from '../../Utils'
 
 enum ScreenMode {
