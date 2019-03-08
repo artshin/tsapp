@@ -1,6 +1,8 @@
 import { Action } from 'redux'
 
-export interface ErrorReducer {}
+export interface ErrorReducer {
+  [index: string]: string | undefined
+}
 
 interface ErrorPayloadAction extends Action {
   payload: {
@@ -9,7 +11,7 @@ interface ErrorPayloadAction extends Action {
 }
 
 // Reducer
-export function errorReducer(state: ErrorReducer = {}, action: ErrorPayloadAction) {
+export function errorReducer(state: ErrorReducer = {}, action: ErrorPayloadAction | any) {
   const { type, payload } = action
   const matches = /(.*)_(REQUEST|FAILURE)/.exec(type)
 
@@ -22,6 +24,6 @@ export function errorReducer(state: ErrorReducer = {}, action: ErrorPayloadActio
     // Store errorMessage
     // e.g. stores errorMessage when receiving GET_TODOS_FAILURE
     //      else clear errorMessage when receiving GET_TODOS_REQUEST
-    [requestName]: requestState === 'FAILURE' ? payload.message : '',
+    [requestName]: requestState === 'FAILURE' ? payload.message : undefined,
   }
 }

@@ -1,36 +1,29 @@
 import { createAction, ActionsUnion } from '@martin_hotell/rex-tils'
 
-export enum AppStatus {
-  Initial = 'inital',
-  Loading = 'loading',
-  Ready = 'ready',
-  Error = 'error',
+// Actions
+export enum AppActionTypes {
+  LOAD_APP_REQUEST = 'tsapp/app/LOAD_APP_REQUEST',
+  LOAD_APP_SUCCESS = 'tsapp/app/LOAD_APP_SUCCESS',
+  LOAD_APP_FAILURE = 'tsapp/app/LOAD_APP_FAILURE',
 }
 
-// Actions
-enum AppActionTypes {
-  UPDATE_APP_STATUS = 'tsapp/app/UPDATE_APP_STATUS',
-}
+export const LoadAppStateName = 'tsapp/app/LOAD_APP'
 
 export const AppActions = {
-  updateAppStatus: (appStatus: AppStatus) =>
-    createAction(AppActionTypes.UPDATE_APP_STATUS, { appStatus }),
+  loadAppRequest: () => createAction(AppActionTypes.LOAD_APP_REQUEST),
+  loadAppSuccess: () => createAction(AppActionTypes.LOAD_APP_SUCCESS),
+  loadAppFailure: ({ message }: { message: string }) =>
+    createAction(AppActionTypes.LOAD_APP_FAILURE, { message }),
 }
 
 export type Actions = ActionsUnion<typeof AppActions>
 
-export interface AppReducer {
-  readonly appStatus: AppStatus
-}
+export interface AppReducer {}
 
-const InitialState: AppReducer = {
-  appStatus: AppStatus.Initial,
-}
+const InitialState: AppReducer = {}
 
 export function appReducer(state: AppReducer = InitialState, action: Actions) {
   switch (action.type) {
-    case AppActionTypes.UPDATE_APP_STATUS:
-      return { ...state, appStatus: action.payload.appStatus }
     default:
       return state
   }

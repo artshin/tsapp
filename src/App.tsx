@@ -3,6 +3,7 @@ import { AppContainer } from './Containers'
 import createStore from './Reducers'
 import { reactotron } from './Utils/ReactotronConfig'
 import { Provider } from 'react-redux'
+import { Root } from 'native-base'
 
 interface Props {}
 
@@ -21,7 +22,9 @@ export default class App extends React.Component<Props> {
 
     return (
       <Provider store={this.store}>
-        <AppContainer />
+        <Root>
+          <AppContainer />
+        </Root>
       </Provider>
     )
   }

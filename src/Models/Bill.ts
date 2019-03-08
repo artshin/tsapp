@@ -1,11 +1,17 @@
-import uuidV4 from 'uuid/v4'
+import { Resource } from '../Types'
 
-export class Bill {
-  public id: string
+export class Bill extends Resource {
+  public static schema = {
+    name: 'Bill',
+    properties: {
+      id: 'string',
+      text: 'string',
+    },
+  }
   public title: string
 
   constructor(title: string) {
-    this.id = uuidV4()
+    super()
     this.title = title
   }
 }

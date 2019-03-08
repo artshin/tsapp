@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { View } from 'react-native'
 import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from 'react-navigation'
 import { ReduxState, ReduxDispatch } from '../../Reducers'
 import { connect } from 'react-redux'
+import { View } from 'react-native'
 
 interface PropParams {
   title: string
@@ -18,7 +18,7 @@ type Props = OwnProps & NavigationInjectedProps
 
 interface State {}
 
-class MarketsContainer extends React.Component<Props, State> {
+class HomeContainer extends React.Component<Props, State> {
   public static navigationOptions = {
     header: null,
   }
@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch: ReduxDispatch) => ({
   // getExchanges: () => dispatch(getExchanges()),
 })
 
-export const ExchangesScreen = connect(
+export const HomeScreen = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(MarketsContainer)
+)(HomeContainer)

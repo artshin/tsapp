@@ -1,5 +1,7 @@
 import { Action } from 'redux'
-export interface LoadingReducer {}
+export interface LoadingReducer {
+  [index: string]: boolean | undefined
+}
 
 // Reducer
 export function loadingReducer(state: LoadingReducer = {}, action: Action) {
