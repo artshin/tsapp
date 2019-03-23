@@ -1,40 +1,45 @@
-import * as Reactotron from 'reactotron-react-native'
-import { reactotronRedux } from 'reactotron-redux'
+import reactotron, { UseReactNativeOptions } from 'reactotron-react-native'
 
-export interface ReduxInterface extends Reactotron.Reactotron {
-  createStore?: (rootReducer: any, middleware: any) => {}
+declare module 'reactotron-core-client' {
+  interface Reactotron {
+    useReactNative?: (options: UseReactNativeOptions) => Reactotron
+    overlay?: (App: React.ReactNode) => void
+    storybookSwitcher?: (App: React.ReactNode) => void
+  }
 }
 
-const reactotronInstance = Reactotron.default
+import { reactotronRedux } from 'reactotron-redux'
 
 export interface ReactotronOptions {
   useRedux: boolean
-  useStorybook: boolean
   clearOnConnect: boolean
   modifyConsole: boolean
 }
 
 export const defaultReactotronOptions: ReactotronOptions = {
   useRedux: true,
-  useStorybook: true,
   clearOnConnect: true,
   modifyConsole: true,
 }
 
 export const connectToReactotron = (options: ReactotronOptions = defaultReactotronOptions) => {
-  reactotronInstance.configure().useReactNative()
+  let instance = reactotron.configure({ name: 'Fairsplit' })
+
+  if (instance.useReactNative) {
+    instance = instance.useReactNative({}).connect()
+  }
+
+  if (instance.clear) {
+    instance.clear()
+  }
 
   if (options.useRedux) {
-    reactotronInstance.use(reactotronRedux())
+    instance.use(reactotronRedux())
   }
-
-  if (options.useStorybook) {
-    reactotronInstance.use(Reactotron.storybook())
-  }
-
-  reactotronInstance.connect().clear()
 
   if (options.modifyConsole) {
-    console.tron = reactotronInstance
+    console.tron = instance
   }
+
+  return instance
 }

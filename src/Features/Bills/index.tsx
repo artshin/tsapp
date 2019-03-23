@@ -3,6 +3,7 @@ import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from '
 import { ReduxState, ReduxDispatch } from '../../Reducers'
 import { connect } from 'react-redux'
 import { BillsScreen as BillsScreenView } from './Components/BillsScreen'
+import { Bill } from '../../Models/Bill'
 
 interface PropParams {
   title: string
@@ -12,6 +13,7 @@ interface StateParams extends NavigationState {
 }
 interface OwnProps {
   navigation: NavigationScreenProp<StateParams>
+  bills: Bill[]
 }
 
 type Props = OwnProps & NavigationInjectedProps
@@ -24,12 +26,20 @@ class BillsContainer extends React.Component<Props, State> {
   }
 
   public render() {
-    return <BillsScreenView />
+    return <BillsScreenView data={this.props.bills} />
   }
 }
 
 const mapStateToProps = (state: ReduxState) => {
+  // const allBillsIds = state.resources[Bill.schema.name].allIds
+  // const bills = allBillsIds.map(id => state.resources[Bill.schema.name].byId[id]) as Bill[]
+  const bills = [
+    { id: '0', title: 'Tim Hortons' },
+    { id: '1', title: 'Fuck you Deadpool' },
+    { id: '2', title: 'Goose the cat' },
+  ]
   return {
+    bills,
     // exchanges: state.exchanges.allIds.map(id => state.exchanges.byId[id]),
   }
 }

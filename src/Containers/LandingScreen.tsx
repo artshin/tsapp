@@ -46,7 +46,7 @@ export class LandingScreenContainer extends React.PureComponent<Props, State> {
 
     setTimeout(
       () => this.setState({ loadingAnimationFinished: true }),
-      __DEV__ ? 5000 : 3500 /* whatever */,
+      __DEV__ ? 0 : 3500 /* whatever */,
     )
   }
 
@@ -62,7 +62,7 @@ export class LandingScreenContainer extends React.PureComponent<Props, State> {
     }
 
     if (!loading && !error && this.state.loadingAnimationFinished) {
-      this.props.navigation.navigate(Screens.Home)
+      this.props.navigation.navigate(Screens.Bills)
     }
   }
 

@@ -3,21 +3,23 @@ import {
   createStore,
   applyMiddleware,
   Middleware,
-  // StoreEnhancer,
-  // compose,
+  compose,
   Action,
   Store,
 } from 'redux'
-import { reducer as billsReducer, BillsReducer } from '../Features/Bills/reducer'
 import thunk, { ThunkDispatch } from 'redux-thunk'
-import { loadingReducer, LoadingReducer } from './LoadingReducer'
-import { errorReducer, ErrorReducer } from './ErrorReducer'
 import { appReducer, AppReducer } from './AppReducer'
-import { resourceListsReducer, ResourceListsReducer } from './ResourceListReducer'
-// import { reactotron } from '../Utils/ReactotronConfig'
+import { connectToReactotron } from '../Utils/ReactotronConfig'
+import {
+  loadingReducer,
+  errorReducer,
+  resourceListsReducer,
+  LoadingReducer,
+  ErrorReducer,
+  ResourceListsReducer,
+} from 'redux-convenience-reducers'
 
 export interface ReduxState {
-  // bills: BillsReducer
   loading: LoadingReducer
   errors: ErrorReducer
   app: AppReducer
@@ -37,10 +39,16 @@ export default (): Store => {
 
   const middleware: Middleware[] = [thunk]
   // const enhancers: StoreEnhancer[] = []
-
-  if (__DEV__ && reactotron.createStore) {
-    return reactotron.createStore(rootReducer, applyMiddleware(...middleware))
+  const reactotron = connectToReactotron()
+  if (__DEV__ && reactotron.createEnhancer) {
+    return createStore(
+      rootReducer,
+      compose(
+        applyMiddleware(...middleware),
+        reactotron.createEnhancer(),
+      ),
+    )
   }
 
-  return createStore(rootReducer, applyMiddleware(...middleware))
+  return createStore(rootReducer, compose(applyMiddleware(...middleware)))
 }

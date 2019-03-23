@@ -1,18 +1,16 @@
 import * as React from 'react'
 import { AppContainer } from './Containers'
 import createStore from './Reducers'
-import { reactotron } from './Utils/ReactotronConfig'
 import { Provider } from 'react-redux'
 import { Root } from 'native-base'
 
-interface Props {}
+type Props = {}
 
 export default class App extends React.Component<Props> {
   private store = createStore()
 
   constructor(props: Props) {
     super(props)
-    reactotron.connect().clear()
   }
 
   public render() {

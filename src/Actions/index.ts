@@ -4,10 +4,11 @@ import { ReduxState } from 'Reducers'
 import { getBills } from '../Features/Bills/actions'
 import { AppActions } from '../Reducers/AppReducer'
 import Database from '../Database'
+import { anyErrorToString } from '../Utils'
 
 type ThunkResult<R> = ThunkAction<R, ReduxState, undefined, Action>
 
-export const loadAppData = (): ThunkResult<void> => async (dispatch, getState) => {
+export const loadAppData = (): ThunkResult<void> => async dispatch => {
   dispatch(AppActions.loadAppRequest())
 
   try {
@@ -15,10 +16,6 @@ export const loadAppData = (): ThunkResult<void> => async (dispatch, getState) =
     await dispatch(getBills())
     dispatch(AppActions.loadAppSuccess())
   } catch (error) {
-    if (typeof error === 'string') {
-      dispatch(AppActions.loadAppFailure({ message: error }))
-    } else {
-      dispatch(AppActions.loadAppFailure({ message: 'unknown error' }))
-    }
+    dispatch(AppActions.loadAppFailure({ message: anyErrorToString(error) }))
   }
 }

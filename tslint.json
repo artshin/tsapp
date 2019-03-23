@@ -15,7 +15,8 @@
     "object-literal-sort-keys": false,
     "jsx-boolean-value": false,
     "quotemark": [true, "single", "jsx-single"],
-    "object-literal-shorthand": true
+    "object-literal-shorthand": true,
+    "member-access": false
   },
   "rulesDirectory": []
 }
