@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { View, ViewStyle, FlatList } from 'react-native'
+import { View, ViewStyle, FlatList, SafeAreaView } from 'react-native'
 import { styles } from './styles'
-import { Text } from 'native-base'
 import { BillItem } from '../BillItem'
 
 interface BillScreenItem {
@@ -21,13 +20,15 @@ export class BillsScreen extends React.PureComponent<Props, State> {
     const { style } = this.props
 
     return (
-      <View style={[styles.container, style]}>
-        <FlatList
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
-          data={this.props.data}
-        />
-      </View>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={[styles.container, style]}>
+          <FlatList
+            keyExtractor={this._keyExtractor}
+            renderItem={this._renderItem}
+            data={this.props.data}
+          />
+        </View>
+      </SafeAreaView>
     )
   }
 
