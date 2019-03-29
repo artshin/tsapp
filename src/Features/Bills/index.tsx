@@ -4,6 +4,7 @@ import { ReduxState, ReduxDispatch } from '../../Reducers'
 import { connect } from 'react-redux'
 import { BillsScreen as BillsScreenView } from './Components/BillsScreen'
 import { Bill } from '../../Models/Bill'
+import { Screens } from '../../Containers/Navigator'
 
 interface PropParams {
   title: string
@@ -26,17 +27,37 @@ class BillsContainer extends React.Component<Props, State> {
   }
 
   public render() {
-    return <BillsScreenView data={this.props.bills} />
+    return (
+      <BillsScreenView
+        data={this.props.bills}
+        onBillPress={this._onBillPress}
+        onCreateBillPress={this._onCreateBillPress}
+      />
+    )
+  }
+
+  private _onBillPress = (bill: Bill) => {
+    this.props.navigation.navigate(Screens.Bill)
+  }
+
+  private _onCreateBillPress = () => {
+    this.props.navigation.navigate(Screens.Bill)
   }
 }
 
 const mapStateToProps = (state: ReduxState) => {
   // const allBillsIds = state.resources[Bill.schema.name].allIds
   // const bills = allBillsIds.map(id => state.resources[Bill.schema.name].byId[id]) as Bill[]
-  const bills = [
-    { id: '0', title: 'Tim Hortons' },
-    { id: '1', title: 'Fuck you Deadpool' },
-    { id: '2', title: 'Goose the cat' },
+  const bills: Bill[] = [
+    { id: '0', title: 'Tim Hortons', total: 2234 },
+    { id: '1', title: 'Fuck you Deadpool', total: 2234 },
+    { id: '2', title: 'Goose the cat', total: 2234 },
+    { id: '3', title: 'Tim Hortons', total: 2234 },
+    { id: '4', title: 'Fuck you Deadpool', total: 2234 },
+    { id: '5', title: 'Goose the cat', total: 2234 },
+    { id: '6', title: 'Tim Hortons', total: 2234 },
+    { id: '7', title: 'Fuck you Deadpool', total: 2234 },
+    { id: '8', title: 'Goose the cat', total: 2234 },
   ]
   return {
     bills,

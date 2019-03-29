@@ -6,7 +6,8 @@ import {
 import { LandingScreen, LoadingScreen } from '../Containers'
 import { FadeTransitionConfig } from '../Utils/Transitions'
 import { BillsScreen } from '../Features/Bills'
-import { SettingsScreen } from './SettingsScreen'
+import { BillScreen } from '../Features/Bill'
+import { SettingsScreen } from '../Features/Settings'
 
 export enum Screens {
   Landing = 'Landing',
@@ -15,10 +16,13 @@ export enum Screens {
   Bills = 'Bills',
   Home = 'Home',
   Tabs = 'Tabs',
+  Bill = 'Bill',
+  Settings = 'Settings',
 }
 
 const HomeStack = createStackNavigator({
   [Screens.Bills]: BillsScreen,
+  [Screens.Bill]: BillScreen,
 })
 
 const SettingsStack = createStackNavigator({
@@ -41,7 +45,7 @@ const MainNavigator = createStackNavigator(
     [Screens.Tabs]: TabContainer,
   },
   {
-    initialRouteName: Screens.Landing,
+    initialRouteName: Screens.Tabs,
     headerMode: 'none',
   },
 )

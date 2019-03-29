@@ -3,16 +3,17 @@ import { Metrics, FontSizes } from '../../../../Utils'
 
 export const styles = StyleSheet.create({
   container: {
-    height: 75,
-    alignItems: 'center',
+    height: 80,
+    // alignItems: 'center',
     // justifyContent: 'center',
-    backgroundColor: 'red',
-    padding: Metrics.baseMargin,
-    flexDirection: 'row',
+    // backgroundColor: 'red',
+    // paddingHorizontal: Metrics.baseMargin,
+    paddingTop: 5,
+    // paddingBottom: 15,
   },
   title: {
-    backgroundColor: 'blue',
-    flex: 1,
+    backgroundColor: 'white',
+    // flex: 1,
     fontSize: FontSizes.regular,
   },
   price: {
@@ -22,10 +23,10 @@ export const styles = StyleSheet.create({
     fontSize: FontSizes.h6,
   },
   date: {
-    backgroundColor: 'brown',
-    flex: 1,
+    // backgroundColor: 'brown',
     textAlign: 'left',
-    fontSize: FontSizes.medium,
+    fontSize: FontSizes.small,
+    fontWeight: '200',
   },
   leftContainer: {
     flex: 0.75,

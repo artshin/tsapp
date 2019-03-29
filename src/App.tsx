@@ -4,7 +4,7 @@ import createStore from './Reducers'
 import { Provider } from 'react-redux'
 import { Root } from 'native-base'
 
-type Props = {}
+interface Props {}
 
 export default class App extends React.Component<Props> {
   private store = createStore()

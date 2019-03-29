@@ -5,10 +5,12 @@ export class Bill extends Resource {
     name: 'Bill',
     properties: {
       id: 'string',
-      text: 'string',
+      title: 'string',
+      total: 'number',
     },
   }
   public title: string
+  public total: number = 0.0
 
   constructor(title: string) {
     super()

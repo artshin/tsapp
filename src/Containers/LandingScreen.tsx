@@ -44,10 +44,7 @@ export class LandingScreenContainer extends React.PureComponent<Props, State> {
   public componentDidMount() {
     this.props.loadAppData()
 
-    setTimeout(
-      () => this.setState({ loadingAnimationFinished: true }),
-      __DEV__ ? 300 : 3500 /* whatever */,
-    )
+    setTimeout(() => this.setState({ loadingAnimationFinished: true }), 3333 /* whatever */)
   }
 
   public componentDidUpdate(prevProps: OwnProps) {

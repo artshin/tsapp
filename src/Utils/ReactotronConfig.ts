@@ -1,14 +1,11 @@
-import reactotron, { UseReactNativeOptions } from 'reactotron-react-native'
+import reactotron, { Reactotron } from 'reactotron-react-native'
+import { reactotronRedux } from 'reactotron-redux'
 
-declare module 'reactotron-core-client' {
-  interface Reactotron {
-    useReactNative?: (options: UseReactNativeOptions) => Reactotron
-    overlay?: (App: React.ReactNode) => void
-    storybookSwitcher?: (App: React.ReactNode) => void
+declare global {
+  interface Console {
+    tron: Reactotron
   }
 }
-
-import { reactotronRedux } from 'reactotron-redux'
 
 export interface ReactotronOptions {
   useRedux: boolean
@@ -38,6 +35,7 @@ export const connectToReactotron = (options: ReactotronOptions = defaultReactotr
   }
 
   if (options.modifyConsole) {
+    // tslint:disable-next-line no-console
     console.tron = instance
   }
 
