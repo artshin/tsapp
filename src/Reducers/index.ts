@@ -18,6 +18,7 @@ import {
   ErrorReducer,
   ResourceListsReducer,
 } from 'redux-convenience-reducers'
+import { reducer as formReducer } from 'redux-form'
 
 export interface ReduxState {
   loading: LoadingReducer
@@ -35,6 +36,7 @@ export default (): Store => {
     errors: errorReducer,
     app: appReducer,
     resources: resourceListsReducer,
+    form: formReducer,
   })
 
   const middleware: Middleware[] = [thunk]

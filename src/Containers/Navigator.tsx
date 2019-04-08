@@ -1,7 +1,9 @@
+import * as React from 'react'
 import {
   createStackNavigator,
   createAppContainer,
   createBottomTabNavigator,
+  NavigationInjectedProps,
 } from 'react-navigation'
 import { LandingScreen, LoadingScreen } from '../Containers'
 import { FadeTransitionConfig } from '../Utils/Transitions'
@@ -20,33 +22,49 @@ export enum Screens {
   Settings = 'Settings',
 }
 
-const HomeStack = createStackNavigator({
-  [Screens.Bills]: BillsScreen,
-  [Screens.Bill]: BillScreen,
-})
+const HomeStack = createStackNavigator(
+  {
+    [Screens.Bills]: BillsScreen,
+  },
+  {
+    headerMode: 'none',
+  },
+)
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
 })
 
 const TabContainer = createAppContainer(
-  createBottomTabNavigator(
-    {
-      Home: HomeStack,
-      Settings: SettingsStack,
-    },
-    {},
-  ),
+  createBottomTabNavigator({
+    Home: HomeStack,
+    Settings: SettingsStack,
+  }),
 )
+
+/// TabContainerWrapper is used to provide usage of navigationOptions per screen, instead of
+/// providing a global resolution function in `createStackNavigator`
+class TabContainerWrapper extends React.PureComponent<NavigationInjectedProps> {
+  static router = TabContainer.router
+  static navigationOptions = {
+    header: null,
+  }
+  render() {
+    const { navigation } = this.props
+
+    return <TabContainer navigation={navigation} />
+  }
+}
 
 const MainNavigator = createStackNavigator(
   {
     [Screens.Landing]: LandingScreen,
-    [Screens.Tabs]: TabContainer,
+    [Screens.Tabs]: TabContainerWrapper,
+    [Screens.Bill]: BillScreen,
   },
   {
     initialRouteName: Screens.Tabs,
-    headerMode: 'none',
+    // headerMode: 'none',
   },
 )
 

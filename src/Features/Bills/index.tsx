@@ -22,9 +22,9 @@ type Props = OwnProps & NavigationInjectedProps
 interface State {}
 
 class BillsContainer extends React.Component<Props, State> {
-  public static navigationOptions = {
-    header: null,
-  }
+  // public static navigationOptions = {
+  //   header: null,
+  // }
 
   public render() {
     return (

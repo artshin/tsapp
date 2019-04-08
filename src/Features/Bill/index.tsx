@@ -1,5 +1,11 @@
 import * as React from 'react'
-import { NavigationInjectedProps, NavigationScreenProp, NavigationState } from 'react-navigation'
+import {
+  NavigationInjectedProps,
+  NavigationScreenProp,
+  NavigationState,
+  HeaderBackButton,
+  NavigationScreenProps,
+} from 'react-navigation'
 import { ReduxState, ReduxDispatch } from '../../Reducers'
 import { connect } from 'react-redux'
 import { BillScreen as BillScreenView } from './Components/BillScreen'
@@ -12,17 +18,49 @@ interface StateParams extends NavigationState {
 }
 interface OwnProps {
   navigation: NavigationScreenProp<StateParams>
+  onBackButtonPress: () => void
 }
 
 type Props = OwnProps & NavigationInjectedProps
 
 interface State {}
 
-class BillContainer extends React.Component<Props, State> {
-  public static navigationOptions = {}
+/*
+ActionSheet.show(
+              {
+                options: BUTTONS,
+                cancelButtonIndex: CANCEL_INDEX,
+                destructiveButtonIndex: DESTRUCTIVE_INDEX,
+                title: "Testing ActionSheet"
+              },
+              buttonIndex => {
+                this.setState({ clicked: BUTTONS[buttonIndex] });
+              }
+            )}
+*/
+interface TestProps {
+  onBackButtonPress: () => void
+}
+
+class BillContainer extends React.Component<NavigationScreenProps<TestProps>, State> {
+  public static navigationOptions = ({ navigation }: NavigationScreenProps<TestProps>) => {
+    const onBackButtonPress = navigation.getParam('onBackButtonPress', () => navigation.goBack())
+    return {
+      headerLeft: <HeaderBackButton onPress={onBackButtonPress} />,
+    }
+  }
+
+  componentDidMount() {
+    this.props.navigation.setParams({ onBackButtonPress: this._onBackButtonPress })
+  }
 
   public render() {
-    return <BillScreenView />
+    return <BillForm />
+  }
+
+  _onBackButtonPress = () => {
+    console.tron.log('fuck yea')
+    this.props.navigation.goBack()
   }
 }
 
@@ -39,3 +77,9 @@ export const BillScreen = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(BillContainer)
+
+const BillForm = connect((state: ReduxState) => ({
+  initialValues: {
+    title: 'Matt Murdock',
+  },
+}))(BillScreenView)

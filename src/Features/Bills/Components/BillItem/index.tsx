@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { View, TouchableOpacity, ViewStyle } from 'react-native'
+import { View, TouchableOpacity, ViewStyle, Text } from 'react-native'
 import { styles } from './styles'
-import { Text } from 'native-base'
 import { Metrics, FontSizes } from '../../../../Utils'
 import { Bill } from '../../../../Models/Bill'
 
@@ -29,62 +28,60 @@ export class BillItem extends React.PureComponent<Props, State> {
           <View
             style={{
               flex: 1,
-              // borderRadius: 12,
-              overflow: 'hidden',
+              flexDirection: 'row',
+              backgroundColor: 'white',
+              justifyContent: 'space-between',
+              padding: Metrics.baseMargin,
+              shadowOpacity: 1,
+              shadowRadius: 1,
+              shadowOffset: {
+                width: 0,
+                height: 1,
+              },
+              shadowColor: 'rgba(0, 0, 0, 0.25)',
+              borderRadius: Metrics.baseMargin,
             }}
           >
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-              <View
-                style={{
-                  flex: 4,
-                  backgroundColor: 'white',
-                  justifyContent: 'space-around',
-                  paddingLeft: Metrics.baseMargin,
-                }}
-              >
-                <Text style={styles.title} numberOfLines={1} ellipsizeMode={'middle'}>
-                  {bill.title}
-                </Text>
-                <Text style={styles.date} numberOfLines={1}>
-                  {'1991-08-08'}
-                </Text>
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: 'center',
-                  justifyContent: 'space-evenly',
-                  backgroundColor: 'white',
-                }}
-              >
+            <View
+              style={{
+                justifyContent: 'space-evenly',
+                paddingLeft: Metrics.baseMargin,
+              }}
+            >
+              <Text style={styles.title} numberOfLines={1} ellipsizeMode={'middle'}>
+                {bill.title}
+              </Text>
+              <Text style={styles.date} numberOfLines={1}>
+                {'1991-08-08'}
+              </Text>
+            </View>
+
+            <View
+              style={{
+                paddingHorizontal: Metrics.smallMargin,
+              }}
+            >
+              <View style={{ flexDirection: 'row', paddingVertical: Metrics.smallMargin }}>
                 <Text
                   style={{
-                    fontSize: FontSizes.medium,
-                    fontWeight: 'bold',
-                    textAlign: 'center',
-                  }}
-                >
-                  {bill.total.toFixed(2)}
-                </Text>
-                <Text
-                  style={{
-                    fontSize: FontSizes.medium,
+                    fontSize: FontSizes.regular,
                     fontWeight: 'bold',
                     textAlign: 'center',
                   }}
                 >
                   {'$'}
                 </Text>
+                <Text
+                  style={{
+                    fontSize: FontSizes.regular,
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                  }}
+                >
+                  {bill.total.toFixed(2)}
+                </Text>
               </View>
             </View>
-
-            <View
-              style={{
-                height: 0.5,
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                marginLeft: Metrics.baseMargin,
-              }}
-            />
           </View>
         </TouchableOpacity>
       </View>
